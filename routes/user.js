@@ -8,31 +8,32 @@ router.get("/",async(req,res)=>{
         user,
     })
 })
-router.get("/:id",(req,res)=>{
+// router.get("/:id",(req,res)=>{
+//     res.send({
+//         status : 200,
+//         msg : "user rootes"
+//     })
+// })
+router.post("/",async(req,res)=>{
+    console.log(req.body);
+    const user = await userModel.create({...req.body})
     res.send({
-        status : 200,
-        msg : "user rootes"
-    })
-})
-router.post("/",(req,res)=>{
-    res.send({
-        status : 200,
-        msg : "user rootes"
+        user,
     })
 })
 
-router.put("/",(req,res)=>{
-    res.send({
-        status : 200,
-        msg : "user rootes"
-    })
-})
-router.delete("/",(req,res)=>{
-    res.send({
-        status : 200,
-        msg : "user rootes"
-    })
-})
+// router.put("/",(req,res)=>{
+//     res.send({
+//         status : 200,
+//         msg : "user rootes"
+//     })
+// })
+// router.delete("/",(req,res)=>{
+//     res.send({
+//         status : 200,
+//         msg : "user rootes"
+//     })
+// })
 
 
 module.exports = router
