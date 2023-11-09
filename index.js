@@ -1,5 +1,8 @@
 const express = require("express")
 const app = express()
+const userRoute = require("./routes/user")
+const blogRoute = require("./routes/blog")
+const morgan = require("morgan");
 const mongoose = require("mongoose");
 mongoose.connect('mongodb+srv://blog:blog@cluster0.nh3jk8t.mongodb.net/').then(()=>{
     console.log("mongoose connected");
@@ -7,13 +10,14 @@ mongoose.connect('mongodb+srv://blog:blog@cluster0.nh3jk8t.mongodb.net/').then((
 .catch((err)=>{
 console.log("mongoose not connected",err);
 })
-const morgan = require("morgan");
-const userRoute = require("./routes/user")
 
 
-app.use("/user",userRoute)
+
+
 app.use(morgan("tiny"))
 app.use(express.json())
+app.use("/user",userRoute)
+app.use("/blog",blogRoute)
 
 
 
