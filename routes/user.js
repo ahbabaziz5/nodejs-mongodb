@@ -10,7 +10,7 @@ console.log( "env >>" ,process.env)
 
 
 //get all users
-router.get("/",authenticateJWT, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const user = await userModel.find()
         if (user) {
